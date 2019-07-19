@@ -1,0 +1,72 @@
+/* pages/bookDetails/bookDetails.wxss */
+
+.book-details {
+  padding-bottom: 140rpx;
+}
+
+.novel-info {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.novel-info > image {
+  width: 300rpx;
+  border-radius: 15rpx;
+  margin: 60rpx 0 40rpx;
+}
+.novel-info > view > text {
+  display: block;
+  font-size: 28rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+.novel-info > view > text:nth-child(1) {
+  font-size: 32rpx;
+}
+
+.book-details .box-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 50rpx 0 30rpx;
+  padding: 30rpx;
+}
+.book-details .box-head .title text {
+  display: inline-block;
+  padding-left: 20rpx;
+}
+.book-details .context {
+  padding: 0 40rpx;
+  line-height: 40rpx;
+  font-size: 30rpx;
+}
+.book-details .box-head .refresh text {
+  font-size: 28rpx;
+}
+.book-details .content-info {
+  margin-bottom: 50rpx;
+}
+
+.operation-btn {
+  width: 100%;
+  height: 180rpx;
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.operation-btn view {
+  width: 210rpx;
+  height: 100rpx;
+  border-radius: 10rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.operation-btn .start-reading {
+  border: none !important;
+}

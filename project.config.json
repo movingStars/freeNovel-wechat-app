@@ -13,7 +13,7 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.3",
-	"appid": "wxdeb799cb9a1d8aca",
+	"appid": "wxff91939b3635ad90",
 	"projectname": "freeNovel-wechat-app",
 	"debugOptions": {
 		"hidedInDevtools": []
@@ -30,13 +30,31 @@
 			"current": -1,
 			"list": []
 		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
 		"game": {
 			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {
-			"current": -1,
-			"list": []
+			"current": 1,
+			"list": [
+				{
+					"id": -1,
+					"name": "详情页",
+					"pathName": "pages/bookDetails/bookDetails",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "阅读页",
+					"pathName": "pages/readingPage/readingPage",
+					"scene": null
+				}
+			]
 		}
 	}
 }

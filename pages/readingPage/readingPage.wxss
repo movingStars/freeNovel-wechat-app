@@ -1,0 +1,110 @@
+/* pages/readingPage/readingPage.wxss */
+
+.reading-page {
+  padding: 20rpx 30rpx;
+}
+
+.reading-page .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.reading-page image {
+  width: 40rpx;
+  height: 40rpx;
+}
+.reading-page .content view {
+  font-size: 36rpx;
+  line-height: 62rpx;
+  text-indent: 76rpx;
+  margin-bottom: 30rpx;
+  text-align: justify;
+}
+.reading-page .content view:nth-child(1) {
+  text-indent: 0;
+  font-size: 44rpx;
+  margin-top: 30rpx;
+}
+
+.reading-page .setting-box {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  padding: 30rpx 40rpx;
+  box-sizing: border-box;
+  font-size: 32rpx;
+}
+.reading-page .setting-box .chapter-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.reading-page .setting-box .chapter-select text:nth-child(2) {
+  max-width: 400rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.reading-page .setting-box .title-set {
+  width: 110rpx;
+}
+.reading-page .setting-box > .setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 50rpx;
+}
+.reading-page .setting-box .operation view {
+  display: inline-block;
+  padding: 8rpx 60rpx;
+  border-radius: 40rpx;
+  border: 1rpx solid #87929f;
+}
+.reading-page .setting-box .operation text {
+  margin: 0 40rpx;
+}
+.reading-page .setting-box .default-size {
+  margin-left: 60rpx;
+}
+.reading-page .setting-box slider {
+  width: 85%;
+  margin: 0;
+}
+.reading-page .setting-box .skin-list {
+  display: block;
+  width: 85%;
+  height: 72rpx;
+  white-space: nowrap;
+}
+.reading-page .setting-box .skin-list view {
+  display: inline-block;
+  width: 72rpx;
+  height: 72rpx;
+  border-radius: 50%;
+  margin-right: 60rpx;
+}
+.reading-page .setting-box .menu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 50rpx 20rpx 20rpx;
+}
+.reading-page .setting-box .menu view {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 32rpx;
+}
+.reading-page .setting-box .menu image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-bottom: 5rpx;
+}
+
+::-webkit-scrollbar{
+  width: 0;
+  height: 0;
+  color: transparent;
+}

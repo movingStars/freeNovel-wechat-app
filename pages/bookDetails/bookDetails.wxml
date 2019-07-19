@@ -1,0 +1,39 @@
+<!--pages/bookDetails/bookDetails.wxml-->
+
+<view class="container book-details" id="{{skin}}">
+  <view class="novel-info">
+    <image src="{{novelInfo.imageUrl}}" mode="widthFix"></image>
+    <view>
+      <text class="titleColor">{{novelInfo.author}}</text>
+      <text>作品</text>
+      <text>字数：{{novelInfo.wordCount}}  评论：{{novelInfo.commentNum}}</text>
+    </view>
+  </view>
+  <view class="update-info">
+    <view class="box-head">
+      <view class="title titleColor">
+        <text>最后更新</text>
+      </view>
+      <view class="refresh">
+        <text>2017.10.28</text>
+      </view>
+    </view>
+    <view class="context">第213章 吞噬（二更）</view>
+  </view>
+  <view class="content-info">
+    <view class="box-head">
+      <view class="title titleColor">
+        <text>内容介绍</text>
+      </view>
+      <view class="refresh">
+        <text>玄幻魔法</text>
+      </view>
+    </view>
+    <view class="context">三十年前,南北两毒君消声隐迹...... 二十年前,"一苏二毒十高手"之首的一苏一夜病逝...... 十九年前,江湖十大高手离奇失踪..... 月圆之夜,明月是否见证了一切? 一枝...</view>
+  </view>
+  <view class="operation-btn">
+    <view class="share-it">分享</view>
+    <view class="start-reading" bindtap="jumpTostartReading">开始阅读</view>
+    <view class="join-bookshelf">加入书架</view>
+  </view>
+</view>

@@ -1,0 +1,62 @@
+<!--pages/readingPage/readingPage.wxml-->
+
+<view class="container reading-page" id="{{skin}}">
+  <view class="header">
+    <navigator url="/pages/bookCity/bookCity" open-type="switchTab" hover-class="none">
+      <image src="../../assets/images/home.png"></image>
+    </navigator>
+    <image src="../../assets/images/setting.png"></image>
+  </view>
+  <view class="content">
+    <block wx:for="{{chapterContent}}" wx:key="idx" wx:for-item="paragraph">
+      <view>{{paragraph}}</view>
+    </block>
+  </view>
+  <view class="setting-box">
+    <view class="chapter-select">
+      <text>上一章</text>
+      <text>{{chapterContent[0]}}</text>
+      <text>下一章</text>
+    </view>
+    <view class="setting-item">
+      <view class="title-set">字号</view>
+      <view class="operation">
+        <view>-</view>
+        <text>36</text>
+        <view>+</view>
+      </view>
+      <view class="default-size">默认</view>
+    </view>
+    <view class="setting-item">
+      <view class="title-set">亮度</view>
+        <slider bindchange="lightnessChange" value="50" activeColor="#fff" 
+          backgroundColor="#000" block-size="18" step="2" min="0" max="100"/>
+    </view>
+    <view class="setting-item">
+      <view class="title-set">主题</view>
+      <scroll-view scroll-x="true" class="skin-list">
+        <block wx:for="{{skinList}}" wx:key="idx" wx:for-item="item">
+          <view style="background: {{item.color}};"></view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class="menu">
+      <view>
+        <image src="../../assets/images/list.png"></image>
+        <text>目录</text>
+      </view>
+      <view>
+        <image src="../../assets/images/share.png"></image>
+        <text>分享</text>
+      </view>
+      <view>
+        <image src="../../assets/images/bookshelf.png"></image>
+        <text>书架</text>
+      </view>
+      <view>
+        <image src="../../assets/images/details.png"></image>
+        <text>详情</text>
+      </view>
+    </view>
+  </view>
+</view>

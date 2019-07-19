@@ -1,0 +1,34 @@
+<!--pages/bookCity/bookCity.wxml-->
+<template name="novel-list-temp">
+  <view class="novel-list-box">
+    <view class="box-head">
+      <view class="title titleColor">
+        <text>{{title}}</text>
+      </view>
+      <view class="refresh">
+        <text>换一换</text>
+        <image src="../../assets/images/refresh.png"></image>
+      </view>
+    </view>
+    <view class="novel-list">
+      <block wx:for="{{novelList}}" wx:key="idx" wx:for-item="novelItem">
+        <view class="novel-item" bindtap="jumpToDetails">
+          <image src="{{'../../assets/novelImages/' + novelItem.url}}" mode="widthFix"></image>
+          <view>{{novelItem.name}}</view>
+          <text class="secTitleColor">{{novelItem.author}}</text>
+        </view>
+      </block>
+    </view>
+  </view>
+</template>
+
+<view class="container" id="{{skin}}">
+  <view class="search" bindtap="jumpToSearchPage">
+    <input placeholder-class="phcolor" disabled='true' placeholder="搜书名或作者"/>
+    <image src="../../assets/images/search.png"></image>
+  </view>
+  <template is="novel-list-temp" data="{{title:'精品汇聚', novelList}}"/>
+  <template is="novel-list-temp" data="{{title:'最好看的书', novelList}}"/>
+  <template is="novel-list-temp" data="{{title:'每日推荐', novelList}}"/>
+  <template is="novel-list-temp" data="{{title:'大家都在搜', novelList}}"/>
+</view>

@@ -1,13 +1,51 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/logs/logs"
+    "pages/bookCity/bookCity",
+    "pages/sort/sort",
+    "pages/bookShelf/bookShelf",
+    "pages/mine/mine",
+    "pages/search/search",
+    "pages/bookDetails/bookDetails",
+    "pages/readingPage/readingPage"
   ],
   "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarBackgroundColor": "#1f222c",
+    "navigationBarTitleText": "大麦说",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#1f222c",
+    "backgroundTextStyle": "dark",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#87929f",
+    "selectedColor": "#f34921",
+    "backgroundColor": "#16191b",
+    "list": [
+      {
+        "pagePath": "pages/bookCity/bookCity",
+        "text": "书城",
+        "iconPath": "assets/images/book-city.png",
+        "selectedIconPath": "assets/images/book-city-checked.png"
+      },
+      {
+        "pagePath": "pages/sort/sort",
+        "text": "分类",
+        "iconPath": "assets/images/sort.png",
+        "selectedIconPath": "assets/images/sort-checked.png"
+      },
+      {
+        "pagePath": "pages/bookShelf/bookShelf",
+        "text": "书架",
+        "iconPath": "assets/images/book-shelf.png",
+        "selectedIconPath": "assets/images/book-shelf-checked.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "assets/images/mine.png",
+        "selectedIconPath": "assets/images/mine-checked.png"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }

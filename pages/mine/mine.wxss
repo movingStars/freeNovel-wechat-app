@@ -1,4 +1,5 @@
-/**index.wxss**/
+/* pages/mine/mine.wxss */
+
 .userinfo {
   display: flex;
   flex-direction: column;
