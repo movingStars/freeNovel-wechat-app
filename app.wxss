@@ -50,6 +50,13 @@ page {
 #dark-skin .operation-btn .start-reading {
   background: #f34921;
 }
-#dark-skin .setting-box {
+#dark-skin .setting-box, #dark-skin .chapter-list {
   background: #282d3c;
+  box-shadow: 12rpx 0 30rpx #16191b;
+}
+#dark-skin .setting-box .operation view, #dark-skin .chapter-operation view {
+  border: 1rpx solid #87929f;
+}
+#dark-skin .setting-box .operation .disable-change {
+  border: 1rpx solid #abb2bb;
 }

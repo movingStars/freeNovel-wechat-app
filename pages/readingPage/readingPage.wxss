@@ -9,27 +9,43 @@
   align-items: center;
   justify-content: space-between;
 }
-.reading-page image {
+.reading-page .header image {
   width: 40rpx;
   height: 40rpx;
 }
-.reading-page .content view {
+.reading-page .content {
   font-size: 36rpx;
-  line-height: 62rpx;
+  line-height: 72rpx;
   text-indent: 76rpx;
   margin-bottom: 30rpx;
   text-align: justify;
 }
-.reading-page .content view:nth-child(1) {
+.reading-page .content > view:nth-child(1) {
   text-indent: 0;
-  font-size: 44rpx;
-  margin-top: 30rpx;
+  font-weight: bold;
+  margin: 30rpx 0 20rpx;
+}
+.reading-page .chapter-operation {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 80rpx 0 40rpx;
+}
+.reading-page .chapter-operation view {
+  width: 210rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 36rpx;
+  text-align: center;
+  border-radius: 12rpx;
+  margin-bottom: 30rpx;
 }
 
 .reading-page .setting-box {
   width: 100%;
   position: fixed;
-  bottom: 0;
+  bottom: -700rpx;
   left: 0;
   padding: 30rpx 40rpx;
   box-sizing: border-box;
@@ -57,9 +73,8 @@
 }
 .reading-page .setting-box .operation view {
   display: inline-block;
-  padding: 8rpx 60rpx;
+  padding: 0rpx 60rpx 8rpx;
   border-radius: 40rpx;
-  border: 1rpx solid #87929f;
 }
 .reading-page .setting-box .operation text {
   margin: 0 40rpx;
@@ -101,6 +116,48 @@
   width: 40rpx;
   height: 40rpx;
   margin-bottom: 5rpx;
+}
+
+.reading-page .chapter-list {
+  position: fixed;
+  top: 0;
+  left: -700rpx;
+  width: 650rpx;
+  height: 100vh;
+  padding: 30rpx 0;
+  box-sizing: border-box;
+}
+.reading-page .chapter-list .novel-name {
+  font-size: 48rpx;
+  line-height: 80rpx;
+  padding: 0 30rpx;
+}
+.reading-page .chapter-list .update-info {
+  font-size: 28rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30rpx;
+  border-bottom: 1rpx solid #1f222c;
+}
+.reading-page .chapter-list .update-info image {
+  width: 35rpx;
+  height: 35rpx;
+}
+.reading-page .chapter-list .list {
+  height: 82vh;
+  padding: 0 30rpx;
+  box-sizing: border-box;
+}
+.reading-page .chapter-list .list text {
+  display: block;
+  font-size: 32rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid #1f222c;
+}
+.reading-page .chapter-list .list .selected {
+  color: #b6c6d8;
 }
 
 ::-webkit-scrollbar{
