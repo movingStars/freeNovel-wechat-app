@@ -1,12 +1,13 @@
 {
   "pages": [
     "pages/bookCity/bookCity",
-    "pages/sort/sort",
+    "pages/category/category",
     "pages/bookShelf/bookShelf",
     "pages/mine/mine",
     "pages/search/search",
     "pages/bookDetails/bookDetails",
-    "pages/readingPage/readingPage"
+    "pages/readingPage/readingPage",
+    "pages/novelList/novelList"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1f222c",
@@ -28,7 +29,7 @@
         "selectedIconPath": "assets/images/book-city-checked.png"
       },
       {
-        "pagePath": "pages/sort/sort",
+        "pagePath": "pages/category/category",
         "text": "分类",
         "iconPath": "assets/images/sort.png",
         "selectedIconPath": "assets/images/sort-checked.png"

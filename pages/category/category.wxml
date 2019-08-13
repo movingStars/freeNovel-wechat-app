@@ -1,0 +1,13 @@
+<!--pages/category/category.wxml-->
+
+<view class="container category-page" id="{{skin}}">
+  <view class="tips">点击分类进入相应的分类列表</view>
+  <view class="category-list">
+    <block wx:for="{{categoryList}}" wx:key="idx" wx:for-item="categoryItem">
+      <view class="category-item" bindtap="jumpToNovelList" data-id="{{categoryItem.id}}">
+        <image src="{{'../../assets/category-img/'+categoryItem.id+'.jpg'}}"></image>
+        <view>{{categoryItem.name}}</view>
+      </view>
+    </block>
+  </view>
+</view>

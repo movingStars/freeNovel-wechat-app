@@ -2,80 +2,44 @@
 const app = getApp()
 
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
     skin: app.globalData.skin,
-    novelInfo: {
-      imageUrl: '../../assets/novelImages/2.jpg',
-      author: '南派三叔',
-      wordCount: '392K',
-      commentNum: 238
-    }
+    novelId: '',
+    novelInfo: {}
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-    
+    this.getNovelInfo(options.id)
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-    this.setData({
-      skin: app.globalData.skin
+  getNovelInfo: function (novelId) {
+    app.doFetch({
+      url: '/api/novel-info',
+      params: {
+        id: novelId
+      },
+      success: (res) => {
+        this.setData({
+          novelId,
+          novelInfo: res.data
+        })
+        wx.setNavigationBarTitle({
+          title: res.data.name
+        })
+      },
+      fail: (res) => {
+        console.log(res)
+      }
     })
   },
+  jumpToStartReading: function () {
+    const readingHistory = wx.getStorageSync('readingHistory')
+    const { novelInfo } = this.data
+    let chapterId = 1
 
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  jumpTostartReading: function () {
+    if (readingHistory[novelInfo.name]) {
+      chapterId = readingHistory[novelInfo.name]
+    }
     wx.navigateTo({
-      url: '/pages/readingPage/readingPage',
+      url: `../readingPage/readingPage?chapterId=${chapterId}&novelName=${novelInfo.name}&updateType=${novelInfo.update_type}`,
     })
   }
 })

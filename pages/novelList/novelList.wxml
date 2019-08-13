@@ -1,0 +1,21 @@
+<!--pages/novelList/novelList.wxml-->
+
+<view class="container novel-list-page" id="{{skin}}">
+  <view class="novel-list">
+    <block wx:for="{{novelList}}" wx:for-item="novelItem" wx:key="idx">
+      <view class="novel-item">
+        <image src="{{novelItem.logo_url}}"></image>
+        <view class="novel-item-info">
+          <view class="novel-name">
+            <text class="titleColor">{{novelItem.name}}</text>
+            <text class="secTitleColor">{{novelItem.author_name}}</text>
+          </view>
+          <view class="novel-content">{{novelItem.intro}}</view>
+          <view class="novel-type">
+            <text class="secTitleColor">{{novelItem.update_type ? '连载中' : '已完结'}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>

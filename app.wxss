@@ -57,6 +57,16 @@ page {
 #dark-skin .setting-box .operation view, #dark-skin .chapter-operation view {
   border: 1rpx solid #87929f;
 }
-#dark-skin .setting-box .operation .disable-change {
-  border: 1rpx solid #abb2bb;
+#dark-skin .setting-box .operation .disable-change, #dark-skin .chapter-operation .disable-select {
+  color: #525c69;
+  border: 1rpx solid #525c69;
+}
+#dark-skin .setting-box .chapter-select .disable-select {
+  color: #525c69;
+}
+#dark-skin > .category-list .category-item view {
+  color: #333;
+}
+#dark-skin > .novel-list > .novel-item {
+  border-bottom: 1rpx solid #16191b;
 }

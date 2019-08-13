@@ -1,0 +1,43 @@
+/* pages/category/category.wxss */
+
+.category-page {
+  padding: 20rpx 30rpx;
+}
+
+.category-page > .tips {
+  font-size: 28rpx;
+  height: 80rpx;
+  line-height: 40rpx;
+  text-align: center;
+}
+
+.category-page > .category-list {
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+.category-page > .category-list .category-item {
+  position: relative;
+  width: 210rpx;
+  height: 190rpx;
+  margin-bottom: 30rpx;
+}
+.category-page > .category-list .category-item image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+.category-page > .category-list .category-item view {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 28rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: #fff;
+  border-bottom-left-radius: 10rpx;
+  border-bottom-right-radius: 10rpx;
+}

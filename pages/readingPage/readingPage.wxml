@@ -13,25 +13,27 @@
     </block>
   </view>
   <view class="chapter-operation">
-    <view>上一章</view>
-    <view>目录</view>
-    <view>下一章</view>
-    <view>首页</view>
-    <view>菜单</view>
+    <view bindtap="jumpToPreviousChapter" class="{{currentChapterId <= 1 ? 'disable-select' : ''}}">上一章</view>
+    <view bindtap="chapterListTrigger">目录</view>
+    <view bindtap="jumpToNextChapter" class="{{currentChapterId >= chapterList.length - 1 ? 'disable-select' : ''}}">下一章</view>
+    <navigator url="/pages/bookCity/bookCity" open-type="switchTab" hover-class="none">
+      <view>首页</view>
+    </navigator>
+    <view bindtap="settingTrigger">菜单</view>
     <view>转发</view>
   </view>
   <view class="setting-box" animation="{{settingAnimation}}">
     <view class="chapter-select">
-      <text bindtap="previousChapter">上一章</text>
+      <text bindtap="jumpToPreviousChapter" data-type="setting" class="{{currentChapterId <= 1 ? 'disable-select' : ''}}">上一章</text>
       <text>{{chapterContent[0]}}</text>
-      <text bindtap="nextChapter">下一章</text>
+      <text bindtap="jumpToNextChapter" data-type="setting" class="{{currentChapterId >= chapterList.length - 1 ? 'disable-select' : ''}}">下一章</text>
     </view>
     <view class="setting-item">
       <view class="title-set">字号</view>
       <view class="operation">
-        <view data-val="{{fontSize - 4}}" class="{{fontSize < 24 ? 'disable-change' : ''}}" bindtap="changeFontSize">-</view>
+        <view data-val="{{fontSize - 4}}" class="{{fontSize <= 24 ? 'disable-change' : ''}}" bindtap="changeFontSize">-</view>
         <text>{{fontSize}}</text>
-        <view data-val="{{fontSize + 4}}" class="{{fontSize > 96 ? 'disable-change' : ''}}" bindtap="changeFontSize">+</view>
+        <view data-val="{{fontSize + 4}}" class="{{fontSize >= 96 ? 'disable-change' : ''}}" bindtap="changeFontSize">+</view>
       </view>
       <view data-val="36" bindtap="changeFontSize" class="default-size">默认</view>
     </view>
@@ -61,21 +63,21 @@
         <image src="../../assets/images/bookshelf.png"></image>
         <text>书架</text>
       </view>
-      <view>
+      <view bindtap="backToDetails">
         <image src="../../assets/images/details.png"></image>
         <text>详情</text>
       </view>
     </view>
   </view>
   <view class="chapter-list" animation="{{chapterListAnimation}}" catchtouchmove="true">
-    <view class="novel-name">南派三叔</view>
+    <view class="novel-name">{{novelName}}</view>
     <view class="update-info">
-      <text>已更新完毕</text>
-      <image src="../../assets/images/order.png"></image>
+      <text>{{updateType == '1' ? '连载中' : '已完结'}}</text>
+      <image bindtap="setSortOrder" src="../../assets/images/order.png"></image>
     </view>
     <scroll-view scroll-y class="list">
       <block wx:for="{{chapterList}}" wx:key="idx" wx:for-item="chapterItem">
-        <text class="{{currentChapter.id == chapterItem.id ? 'selected' : ''}}">{{chapterItem.name}}</text>
+        <text class="{{currentChapterId == chapterItem.id ? 'selected' : ''}}" data-id="{{chapterItem.id}}" bindtap="jumpToSelectedChapter">{{chapterItem.name}}</text>
       </block>
     </scroll-view>
   </view>

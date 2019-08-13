@@ -4,12 +4,21 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
-		"autoAudits": false
+		"coverView": true,
+		"autoAudits": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		}
 	},
 	"compileType": "miniprogram",
 	"libVersion": "2.7.3",
@@ -39,19 +48,33 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 3,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "详情页",
 					"pathName": "pages/bookDetails/bookDetails",
+					"query": "id=20",
+					"scene": null
+				},
+				{
+					"id": 1,
+					"name": "阅读页",
+					"pathName": "pages/readingPage/readingPage",
+					"query": "novelName=元神&chapterId=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "分类",
+					"pathName": "pages/category/category",
 					"query": "",
 					"scene": null
 				},
 				{
 					"id": -1,
-					"name": "阅读页",
-					"pathName": "pages/readingPage/readingPage",
+					"name": "小说列表",
+					"pathName": "pages/novelList/novelList",
 					"scene": null
 				}
 			]

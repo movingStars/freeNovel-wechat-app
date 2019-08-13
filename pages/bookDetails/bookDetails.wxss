@@ -1,7 +1,7 @@
 /* pages/bookDetails/bookDetails.wxss */
 
 .book-details {
-  padding-bottom: 140rpx;
+  padding-bottom: 190rpx;
 }
 
 .novel-info {

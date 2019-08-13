@@ -1,24 +1,27 @@
 <!--pages/bookDetails/bookDetails.wxml-->
 
+<wxs module="bookDetails" src="./bookDetails.wxs"></wxs>
 <view class="container book-details" id="{{skin}}">
   <view class="novel-info">
-    <image src="{{novelInfo.imageUrl}}" mode="widthFix"></image>
+    <image src="{{novelInfo.logo_url}}" mode="widthFix"></image>
     <view>
-      <text class="titleColor">{{novelInfo.author}}</text>
+      <text class="titleColor">{{novelInfo.author_name}}</text>
       <text>作品</text>
-      <text>字数：{{novelInfo.wordCount}}  评论：{{novelInfo.commentNum}}</text>
+      <text>字数：{{bookDetails.formatWordCount(novelInfo.word_count)}} \r\t 评论：256</text>
     </view>
   </view>
   <view class="update-info">
     <view class="box-head">
       <view class="title titleColor">
-        <text>最后更新</text>
+        <text>更新状态</text>
       </view>
       <view class="refresh">
-        <text>2017.10.28</text>
+        <text class="secTitleColor">{{novelInfo.update_type ? '连载中' : '已完结'}}</text>
       </view>
     </view>
-    <view class="context">第213章 吞噬（二更）</view>
+    <view class="context" v-if="novelInfo.update_type">
+      <text>{{novelInfo.new_chapter_name}}</text>
+    </view>
   </view>
   <view class="content-info">
     <view class="box-head">
@@ -26,14 +29,14 @@
         <text>内容介绍</text>
       </view>
       <view class="refresh">
-        <text>玄幻魔法</text>
+        <text class="secTitleColor">{{novelInfo.category}}</text>
       </view>
     </view>
-    <view class="context">三十年前,南北两毒君消声隐迹...... 二十年前,"一苏二毒十高手"之首的一苏一夜病逝...... 十九年前,江湖十大高手离奇失踪..... 月圆之夜,明月是否见证了一切? 一枝...</view>
+    <view class="context">{{novelInfo.intro}}</view>
   </view>
   <view class="operation-btn">
     <view class="share-it">分享</view>
-    <view class="start-reading" bindtap="jumpTostartReading">开始阅读</view>
+    <view class="start-reading" bindtap="jumpToStartReading">开始阅读</view>
     <view class="join-bookshelf">加入书架</view>
   </view>
 </view>

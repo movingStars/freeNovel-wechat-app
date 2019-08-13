@@ -1,0 +1,11 @@
+module.exports = {
+  formatWordCount: function (wordCount) {
+    var billion = Math.floor(wordCount / Math.pow(10, 8))
+    wordCount = wordCount - billion * Math.pow(10, 8)
+    var tenThousand = Math.floor(wordCount / Math.pow(10, 4))
+    wordCount = wordCount - tenThousand * Math.pow(10, 4)
+    var thousand = Math.floor(wordCount / Math.pow(10, 3))
+
+    return (billion ? billion + '亿' : '') + (tenThousand ? tenThousand + '万' : '') + (thousand ? thousand + '千' : '')
+  }
+}

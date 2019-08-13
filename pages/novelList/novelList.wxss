@@ -1,0 +1,45 @@
+/* pages/novelList/novelList.wxss */
+
+.novel-list-page {
+  padding: 0 30rpx;
+}
+
+.novel-list > .novel-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+.novel-list > .novel-item > image {
+  width: 105rpx;
+  height: 140rpx;
+  margin-right: 30rpx;
+}
+.novel-list > .novel-item > .novel-item-info {
+  width: 80%;
+}
+.novel-list > .novel-item .novel-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.novel-list > .novel-item .novel-name text:nth-child(1) {
+  font-size: 32rpx;
+}
+.novel-list > .novel-item .novel-name text:nth-child(2) {
+  font-size: 28rpx;
+}
+.novel-list > .novel-item .novel-content {
+  font-size: 28rpx;
+  padding: 8rpx 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.novel-list > .novel-item .novel-type {
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

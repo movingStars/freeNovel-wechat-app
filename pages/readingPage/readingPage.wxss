@@ -155,6 +155,9 @@
   font-size: 32rpx;
   line-height: 100rpx;
   border-bottom: 1rpx solid #1f222c;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .reading-page .chapter-list .list .selected {
   color: #b6c6d8;

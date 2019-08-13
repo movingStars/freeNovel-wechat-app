@@ -57,7 +57,7 @@
 }
 .novel-list-box .novel-item image {
   width: 100%;
-  height: auto;
+  height: 200rpx;
 }
 .novel-list-box .novel-item view {
   overflow: hidden;

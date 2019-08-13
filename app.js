@@ -26,6 +26,24 @@ App({
     this.globalData.skin = skin
     wx.setStorageSync('skin', skin)
   },
+  doFetch: function ({url = '', method = 'GET', params = {}, header = {}, success = () => {}, fail = () => {}}) {
+    const BASE_URL = 'http://127.0.0.1:8787'
+
+    wx.request({
+      url: BASE_URL + url,
+      method,
+      data: params,
+      header: {
+        ...header
+      },
+      success: (res) => {
+        success(res)
+      },
+      fail: (res) => {
+        fail(res)
+      }
+    })
+  },
   globalData: {
     userInfo: null,
     skin: wx.getStorageSync('skin') || 'dark-skin'
