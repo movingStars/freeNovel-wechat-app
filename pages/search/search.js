@@ -1,66 +1,117 @@
 // pages/search/search.js
+const app = getApp()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    skin: app.globalData.skin,
+    novelList: [],
+    showReaultList: false,
+    inputValue: '',
+    historyArr: wx.getStorageSync('searchHistoryArr') || [],
+    publicSearchArr: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
   onLoad: function (options) {
-
+    this.searchPublicHistory()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  bindInputValue: function (e) {
+    this.setData({
+      inputValue: e.detail.value
+    })
+    if (e.detail.value === '') {
+      this.setData({
+        showReaultList: false
+      })
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  clearInput: function () {
+    this.setData({
+      inputValue: '',
+      showReaultList: false
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  doSubmit: function () {
+    this.searchNovels(this.data.inputValue)
   },
+  searchHistory: function (e) {
+    const value = e.currentTarget.dataset.value
 
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+    this.setData({
+      inputValue: value
+    })
+    this.searchNovels(value)
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  clearSearchHistory: function () {
+    this.setData({
+      historyArr: []
+    })
+    wx.removeStorage({
+      key: 'searchHistoryArr'
+    })
   },
+  searchNovels: function (searchValue) {
+    const historyArr = wx.getStorageSync('searchHistoryArr') || []
 
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
+    if (!historyArr.includes(searchValue)) {
+      historyArr.push(searchValue)
+      wx.setStorage({
+        key: 'searchHistoryArr',
+        data: historyArr
+      })
+    }
+    this.setData({
+      novelList: [],
+      showReaultList: true,
+      historyArr
+    })
+    app.doFetch({
+      url: '/api/search-novels',
+      params: {
+        name: searchValue
+      },
+      success: (res) => {
+        this.setData({
+          novelList: res.data
+        })
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: '搜索失败，请稍后重试',
+          icon: 'none'
+        })
+      }
+    })
   },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  searchPublicHistory: function () {
+    app.doFetch({
+      url: '/api/public-history',
+      success: (res) => {
+        this.setData({
+          publicSearchArr: res.data
+        })
+      }
+    })
+  },
+  jumpToNovelDetails: function (e) {
+    const { id, name } = e.currentTarget.dataset
+    wx.navigateTo({
+      url: `../bookDetails/bookDetails?id=${id}`
+    })
+    this.addPublicSearch(id, name)
+  },
+  addPublicSearch: function (id, name) {
+    app.doFetch({
+      url: '/api/public-search',
+      method: 'post',
+      params: {
+        id,
+        name
+      },
+      success: (res) => {
+        console.log(res)
+      },
+      fail: (res) => {
+        console.log(res)
+      }
+    })
   }
 })

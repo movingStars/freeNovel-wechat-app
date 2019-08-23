@@ -1,1 +1,120 @@
 /* pages/search/search.wxss */
+
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+.search-input {
+  position: relative;
+  width: 80%;
+}
+.search-input input {
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 60rpx;
+  padding: 0 70rpx;
+}
+.search-input > image:nth-child(1) {
+  position: absolute;
+  top: 50%;
+  left: 30rpx;
+  transform: translateY(-50%);
+  width: 30rpx;
+  height: 30rpx;
+}
+.search-input > image:nth-child(3) {
+  position: absolute;
+  top: 50%;
+  right: 30rpx;
+  transform: translateY(-50%);
+  width: 25rpx;
+  height: 25rpx;
+}
+.search-button button {
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 60rpx;
+  font-size: 30rpx;
+  padding: 0 30rpx;
+}
+
+.search-page .box-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+}
+.search-page .box-head .title text {
+  display: inline-block;
+  padding-left: 20rpx;
+}
+.search-page .box-head .operation text {
+  font-size: 28rpx;
+}
+.search-page .search-history .history {
+  min-height: 100rpx;
+}
+.search-page .search-history .history, .search-page .search-example .example {
+  display: flex;
+  flex-flow: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 30rpx;
+}
+.search-page > .search-history > .history > text, .search-page > .search-example > .example > text {
+  padding: 10rpx;
+  margin: 0 30rpx 30rpx 0;
+  border: 1rpx solid #87929f;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+}
+
+.search-page > .result-list {
+  padding: 0 30rpx;
+}
+.search-page > .result-list  > .novel-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20rpx 0;
+}
+.search-page > .result-list  > .novel-item > image {
+  width: 105rpx;
+  height: 140rpx;
+  margin-right: 30rpx;
+}
+.search-page > .result-list  > .novel-item > .novel-item-info {
+  width: 80%;
+}
+.search-page > .result-list  > .novel-item .novel-name {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.search-page > .result-list  > .novel-item .novel-name > text:nth-child(1) {
+  font-size: 32rpx;
+}
+.search-page > .result-list  > .novel-item .novel-name > text:nth-child(2) {
+  font-size: 28rpx;
+}
+.search-page > .result-list  > .novel-item .novel-content {
+  font-size: 28rpx;
+  padding: 8rpx 0;
+  box-sizing: border-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.search-page > .result-list  > .novel-item .novel-type {
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.search-page > .result-list .tips {
+  text-align: center;
+  line-height: 140rpx;
+}

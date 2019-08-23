@@ -32,6 +32,9 @@
   justify-content: space-between;
   margin: 80rpx 0 40rpx;
 }
+.reading-page .chapter-operation .share-button {
+  line-height: 80rpx;
+}
 .reading-page .chapter-operation view {
   width: 210rpx;
   height: 80rpx;
@@ -105,12 +108,18 @@
   justify-content: space-between;
   margin: 50rpx 20rpx 20rpx;
 }
-.reading-page .setting-box .menu view {
+.reading-page .setting-box .menu view, .reading-page .setting-box .menu .share-button {
   display: flex;
   flex-flow: column;
   align-items: center;
   justify-content: flex-start;
   font-size: 32rpx;
+  line-height: 100%;
+}
+.reading-page .share-button {
+  width: auto;
+  height: auto;
+  background: inherit;
 }
 .reading-page .setting-box .menu image {
   width: 40rpx;

@@ -40,12 +40,15 @@ page {
 #dark-skin .novel-info > image {
   box-shadow: 0 0 30rpx #000;
 }
-#dark-skin .operation-btn {
+#dark-skin .operation-btn, #dark-skin .operation-btn .share-button button {
   background: #16191b;
 }
 #dark-skin .operation-btn view {
   border: 1px solid #595b63;
   color: #fff;
+}
+#dark-skin .operation-btn view.isAdded {
+  color: #595b63;
 }
 #dark-skin .operation-btn .start-reading {
   background: #f34921;
@@ -64,9 +67,28 @@ page {
 #dark-skin .setting-box .chapter-select .disable-select {
   color: #525c69;
 }
+#dark-skin .setting-box .menu .share-button, #dark-skin .chapter-operation .share-button {
+  color: #87929f;
+}
+#dark-skin .operation-btn .share-button button {
+  color: #fff;
+}
 #dark-skin > .category-list .category-item view {
   color: #333;
 }
-#dark-skin > .novel-list > .novel-item {
+#dark-skin > .novel-list > .novel-item, #dark-skin > .result-list  > .novel-item {
+  border-bottom: 1rpx solid #16191b;
+}
+#dark-skin .search-button button {
+  background-color: #f34921;
+  color: #fff;
+}
+#dark-skin .special-word {
+  color: #f34921;
+}
+#dark-skin > .menu-list > .menu-item {
+  border-top: 1rpx solid #16191b;
+}
+#dark-skin > .menu-list > .menu-item:last-child {
   border-bottom: 1rpx solid #16191b;
 }

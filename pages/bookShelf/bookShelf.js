@@ -1,66 +1,38 @@
 // pages/bookShelf/bookShelf.js
+const app = getApp()
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    skin: app.globalData.skin,
+    shelfList: []
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onShow: function (options) {
+    this.getShelfList()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  getShelfList: function () {
+    app.doFetch({
+      url: '/api/bookshelf-list',
+      success: (res) => {
+        this.setData({
+          shelfList: res.data
+        })
+      },
+      fail: (res) => {
+        wx.showToast({
+          title: '获取书架列表失败',
+          icon: 'none'
+        })
+      }
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  jumpToDetails: function (e) {
+    wx.navigateTo({
+      url: `../bookDetails/bookDetails?id=${e.currentTarget.dataset.id}`
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  jumpToBookCity: function () {
+    wx.switchTab({
+      url: '../bookCity/bookCity'
+    })
   }
 })

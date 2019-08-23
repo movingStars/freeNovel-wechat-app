@@ -7,6 +7,9 @@ Page({
     chapterContent: '',
     chapterList: [],
     currentChapterId: '',
+    novelName: '',
+    updateType: '',
+    imageUrl: '',
     skinList: [{
       name: 'dark-skin',
       color: '#1f222c'
@@ -44,10 +47,11 @@ Page({
     isChapterListShown: false
   },
   onLoad: function (options) {
-    const { chapterId, novelName, updateType } = options
+    const { chapterId, novelName, updateType, imageUrl } = options
     this.setData({
       novelName,
-      updateType
+      updateType,
+      imageUrl
     })
     wx.setNavigationBarTitle({
       title: novelName
@@ -74,7 +78,10 @@ Page({
         wx.setStorageSync('readingHistory', readingHistory)
       },
       fail: (res) => {
-        console.log(res)
+        wx.showToast({
+          title: '获取章节内容失败，请稍后重试',
+          icon: 'none'
+        })
       }
     })
   },
@@ -90,7 +97,10 @@ Page({
         })
       },
       fail: (res) => {
-        console.log(res)
+        wx.showToast({
+          title: '获取章节列表失败，请稍后重试',
+          icon: 'none'
+        })
       }
     })
   },
@@ -222,5 +232,14 @@ Page({
     wx.navigateBack({
       delta: 1
     })
+  },
+  onShareAppMessage: function () {
+    const { currentChapterId, novelName, updateType, imageUrl } = this.data
+    
+    return {
+      title: `《${novelName}》这一章节真的超级精彩，快来看看吧！`,
+      path: `../readingPage/readingPage?chapterId=${currentChapterId}&novelName=${novelName}&updateType=${updateType}`,
+      imageUrl
+    }
   }
 })

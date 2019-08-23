@@ -1,24 +1,62 @@
 //app.js
 App({
   onLaunch: function () {
-    // 获取用户信息
-    wx.getSetting({
-      success: res => {
-        if (res.authSetting['scope.userInfo']) {
-          // 已经授权，可以直接调用 getUserInfo 获取头像昵称，不会弹框
-          wx.getUserInfo({
-            success: res => {
-              // 可以将 res 发送给后台解码出 unionId
-              this.globalData.userInfo = res.userInfo
+    const userInfo = wx.getStorageSync('userInfo') || {}
 
-              // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-              // 所以此处加入 callback 以防止这种情况
-              if (this.userInfoReadyCallback) {
-                this.userInfoReadyCallback(res)
-              }
+    if (!userInfo.userToken) {
+      //登录
+      this.loginMini()
+    } else {
+      // 获取用户信息
+      this.getUserInfo(userInfo.userToken)
+    }
+  },
+  loginMini: function () {
+    wx.login({
+      success: (res) => {
+        if (res.code) {
+          // 登录成功，用code换openid
+          this.getOpenId(res.code)
+        } else {
+          wx.showModal({
+            title: '提示',
+            content: '自动登录失败，是否重新登录',
+            cancelText: '否',
+            confirmText: '是',
+            success: () => {
+              this.loginMini()
             }
           })
         }
+      }
+    })
+  },
+  getUserInfo: function (userToken) {
+    this.doFetch({
+      url: '/api/user-info',
+      params: {
+        token: userToken
+      },
+      success: (res) => {
+        this.setUserInfo(res.data || null)
+      },
+      fail: (res) => {
+        console.log(res)
+      }
+    })
+  },
+  getOpenId: function (code) {
+    this.doFetch({
+      url: '/api/wx-login',
+      method: 'post',
+      params: {
+        code
+      },
+      success: (res) => {
+        this.setUserInfo(res.data || null)
+      },
+      fail: (res) => {
+        console.log(res)
       }
     })
   },
@@ -26,7 +64,7 @@ App({
     this.globalData.skin = skin
     wx.setStorageSync('skin', skin)
   },
-  doFetch: function ({url = '', method = 'GET', params = {}, header = {}, success = () => {}, fail = () => {}}) {
+  doFetch: function ({url = '', method = 'GET', params = {}, header = {}, success = () => {}, fail}) {
     const BASE_URL = 'http://127.0.0.1:8787'
 
     wx.request({
@@ -34,18 +72,39 @@ App({
       method,
       data: params,
       header: {
-        ...header
+        ...header,
+        'Authorization': 'Bearer' + (this.globalData.userInfo ? this.globalData.userInfo.userToken || '' : '')
       },
       success: (res) => {
-        success(res)
+        if (res.statusCode >= 200 && res.statusCode < 300 || res.statusCode === 304) {
+          success(res)
+        } else {
+          if (fail) {
+            fail(res)
+          } else {
+            wx.showToast({
+              title: '服务器错误',
+              image: '/assets/images/error.png',
+              duration: 3000
+            })
+          }
+        }
       },
       fail: (res) => {
-        fail(res)
+        wx.showToast({
+          title: '服务器异常',
+          image: '/assets/images/error.png',
+          duration: 3000
+        })
       }
     })
   },
+  setUserInfo: function (info) {
+    this.globalData.userInfo = info || null
+    wx.setStorageSync('userInfo', info || null)
+  },
   globalData: {
-    userInfo: null,
+    userInfo: wx.getStorageSync('userInfo') || null,
     skin: wx.getStorageSync('skin') || 'dark-skin'
   }
 })

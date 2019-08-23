@@ -18,7 +18,10 @@ Page({
         })
       },
       fail: (res) => {
-        console.log(res)
+        wx.showToast({
+          title: '获取分类列表失败',
+          icon: 'none'
+        })
       }
     })
   },

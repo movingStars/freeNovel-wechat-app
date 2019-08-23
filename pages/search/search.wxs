@@ -1,0 +1,5 @@
+module.exports = {
+  getWordsArr: function (words, speciaWords) {
+    return words.replace(getRegExp(speciaWords, 'g'), '%%'+speciaWords+'%%').split('%%')
+  }
+}

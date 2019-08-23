@@ -2,21 +2,98 @@
 
 .userinfo {
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
 }
 
-.userinfo-avatar {
+.userinfo > .userinfo-avatar {
   width: 128rpx;
   height: 128rpx;
-  margin: 20rpx;
+  margin-right: 50rpx;
   border-radius: 50%;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+.userinfo > view {
+  flex: 1;
 }
 
-.usermotto {
-  margin-top: 200px;
+.userinfo-nickname {
+  font-size: 32rpx;
+}
+
+.userinfo-id {
+  font-size: 28rpx;
+}
+
+.userinfo > button {
+  width: 100rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  margin: 0;
+  padding: 0 10rpx;
+  font-size: 30rpx;
+}
+
+.menu-list {
+  margin: 30rpx;
+}
+.menu-list > .menu-item {
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu-list > .menu-item image {
+  width: 40rpx;
+  height: 40rpx;
+}
+.menu-list > .menu-item text {
+  flex: 1;
+  padding: 0 30rpx;
+}
+
+.novel-list-box .box-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30rpx;
+  padding: 30rpx;
+}
+.novel-list-box .box-head .title text {
+  display: inline-block;
+  padding-left: 20rpx;
+}
+.novel-list-box .refresh text {
+  vertical-align: middle;
+  font-size: 28rpx;
+}
+.novel-list-box .refresh image {
+  width: 30rpx;
+  height: 30rpx;
+  vertical-align: middle;
+  margin-left: 10rpx;
+}
+.novel-list-box .novel-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-flow: row;
+  flex-wrap: wrap;
+  padding: 0 30rpx;
+}
+.novel-list-box .novel-item {
+  width: 145rpx;
+  font-size: 28rpx;
+  line-height: 34rpx;
+  margin-bottom: 30rpx;
+}
+.novel-list-box .novel-item image {
+  width: 100%;
+  height: 200rpx;
+}
+.novel-list-box .novel-item view {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

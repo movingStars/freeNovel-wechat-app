@@ -59,7 +59,7 @@
   padding: 0 30rpx;
   box-sizing: border-box;
 }
-.operation-btn view {
+.operation-btn view, .operation-btn .share-button button {
   width: 210rpx;
   height: 100rpx;
   border-radius: 10rpx;

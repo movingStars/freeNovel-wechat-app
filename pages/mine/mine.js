@@ -4,51 +4,69 @@ const app = getApp()
 
 Page({
   data: {
-    motto: 'Hello World',
+    skin: app.globalData.skin,
     userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
-  },
-  //事件处理函数
-  bindViewTap: function () {
-    wx.navigateTo({
-      url: '../logs/logs'
-    })
+    canIUse: wx.canIUse('button.open-type.getUserInfo'),
+    novelList: []
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
+    this.setData({
+      userInfo: app.globalData.userInfo || {}
+    })
+    this.getPublicSearch()
+  },
+  getPublicSearch: function () {
+    app.doFetch({
+      url: '/api/public-search-novels',
+      success: (res) => {
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
+          novelList: res.data
         })
       }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
+    })
+  },
+  getWXUserInfo: function (e) {
+    const info = e.detail.userInfo || null
+
+    if (info) {
+      app.doFetch({
+        url: '/api/update-userinfo',
+        method: 'post',
+        params: info,
+        success: (res) => {
           this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
+            userInfo: res.data || {}
+          })
+          app.setUserInfo(res.data || null)
+          if (this.data.userInfo.authorized) {
+            wx.showToast({
+              title: '更新成功',
+              icon: 'none'
+            })
+          } else {
+            wx.showToast({
+              title: '授权成功',
+              icon: 'none'
+            })
+          }
+        },
+        fail: (res) => {
+          wx.showToast({
+            title: '更新失败，请稍后重试',
+            icon: 'none'
           })
         }
       })
     }
   },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  jumpToDetails: function (e) {
+    wx.navigateTo({
+      url: `../bookDetails/bookDetails?id=${e.currentTarget.dataset.id}`
+    })
+  },
+  jumpToDisclaimer: function () {
+    wx.navigateTo({
+      url: '../disclaimer/disclaimer'
     })
   }
 })

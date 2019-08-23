@@ -1,13 +1,41 @@
 <!--pages/mine/mine.wxml-->
-<view class="container">
+<wxs src="./mine.wxs" module="mine" />
+<view class="container mine-page" id="{{skin}}">
   <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+    <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl || '../../assets/category-img/8.jpg'}}" mode="cover"></image>
+    <view>
+      <view class="userinfo-nickname titleColor">昵称：{{userInfo.nickName || '请先授权'}}</view>
+      <text class="userinfo-id secTitleColor">ID：{{mine.sliceUserTokenToShow(userInfo.userToken)}}</text>
+    </view>
+    <button class="iconColor titleColor" open-type="getUserInfo" bindgetuserinfo="getWXUserInfo">
+      {{userInfo.authorized ? '更新' : '授权'}}
+    </button>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="menu-list">
+    <view class="menu-item" bindtap="jumpToDisclaimer">
+      <image src="../../assets/images/declare.png"></image>
+      <text>免责声明</text>
+      <image src="../../assets/images/right.png"></image>
+    </view>
+  </view>
+  <view class="novel-list-box">
+    <view class="box-head">
+      <view class="title titleColor">
+        <text>大家都在搜</text>
+      </view>
+      <view class="refresh" bindtap="getPublicSearch">
+        <text>换一换</text>
+        <image src="../../assets/images/refresh.png"></image>
+      </view>
+    </view>
+    <view class="novel-list">
+      <block wx:for="{{novelList}}" wx:key="idx" wx:for-item="novelItem">
+        <view class="novel-item" bindtap="jumpToDetails" data-id="{{novelItem.id}}">
+          <image src="{{novelItem.logo_url}}" mode="heightFix"></image>
+          <view>{{novelItem.name}}</view>
+          <view class="secTitleColor">{{novelItem.author_name}}</view>
+        </view>
+      </block>
+    </view>
   </view>
 </view>

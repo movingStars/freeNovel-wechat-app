@@ -3,7 +3,7 @@
 <view class="container novel-list-page" id="{{skin}}">
   <view class="novel-list">
     <block wx:for="{{novelList}}" wx:for-item="novelItem" wx:key="idx">
-      <view class="novel-item">
+      <view class="novel-item" bindtap="jumpToNovelDetails" data-id="{{novelItem.id}}">
         <image src="{{novelItem.logo_url}}"></image>
         <view class="novel-item-info">
           <view class="novel-name">
@@ -17,5 +17,8 @@
         </view>
       </view>
     </block>
+    <view class="tips" wx:if="{{novelList === null || isLoading}}">查询中...</view>
+    <view class="tips" wx:if="{{novelList && novelList.length <= 0}}">非常抱歉，没能为您查到小说~.~</view>
+    <view class="tips" wx:if="{{novelList && novelList.length > 1 && !hasMore}}">到苏格拉底了^.^</view>
   </view>
 </view>

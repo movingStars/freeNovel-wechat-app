@@ -20,7 +20,9 @@
       <view>首页</view>
     </navigator>
     <view bindtap="settingTrigger">菜单</view>
-    <view>转发</view>
+    <view>
+      <button class="share-button" open-type="share">转发</button>
+    </view>
   </view>
   <view class="setting-box" animation="{{settingAnimation}}">
     <view class="chapter-select">
@@ -56,13 +58,17 @@
         <text>目录</text>
       </view>
       <view>
-        <image src="../../assets/images/share.png"></image>
-        <text>分享</text>
+        <button class="share-button" open-type="share">
+          <image src="../../assets/images/share.png"></image>
+          <text>分享</text>
+        </button>
       </view>
-      <view>
-        <image src="../../assets/images/bookshelf.png"></image>
-        <text>书架</text>
-      </view>
+      <navigator url="/pages/bookShelf/bookShelf" open-type="switchTab" hover-class="none">
+        <view>
+          <image src="../../assets/images/bookshelf.png"></image>
+          <text>书架</text>
+        </view>
+      </navigator>
       <view bindtap="backToDetails">
         <image src="../../assets/images/details.png"></image>
         <text>详情</text>

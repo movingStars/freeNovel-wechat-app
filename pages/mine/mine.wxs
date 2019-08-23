@@ -1,0 +1,5 @@
+module.exports = {
+  sliceUserTokenToShow: function (token) {
+    return token ? token.slice(-12) : ''
+  }
+}

@@ -48,7 +48,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 3,
+			"current": 7,
 			"list": [
 				{
 					"id": 0,
@@ -72,9 +72,37 @@
 					"scene": null
 				},
 				{
-					"id": -1,
+					"id": 3,
 					"name": "小说列表",
 					"pathName": "pages/novelList/novelList",
+					"query": "id=1",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "搜索页",
+					"pathName": "pages/search/search",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/mine",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "书架",
+					"pathName": "pages/bookShelf/bookShelf",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "免责声明",
+					"pathName": "pages/disclaimer/disclaimer",
 					"scene": null
 				}
 			]

@@ -43,3 +43,7 @@
   align-items: center;
   justify-content: space-between;
 }
+.novel-list-page > .novel-list > .tips {
+  text-align: center;
+  line-height: 140rpx;
+}

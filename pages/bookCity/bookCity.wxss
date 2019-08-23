@@ -14,7 +14,7 @@
 .search image {
   position: absolute;
   top: 50%;
-  right: 60rpx;
+  right: 70rpx;
   transform: translateY(-50%);
   width: 40rpx;
   height: 40rpx;

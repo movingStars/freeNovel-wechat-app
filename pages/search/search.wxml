@@ -1,2 +1,64 @@
 <!--pages/search/search.wxml-->
-<text>搜索页</text>
+<wxs src="./search.wxs" module="search"/>
+<view class="container search-page" id="{{skin}}">
+  <view class="search-box">
+    <view class="search-input">
+      <image src="../../assets/images/search-gray.png"></image>
+      <input auto-focus bindinput="bindInputValue" value="{{inputValue}}" placeholder-class="phcolor" placeholder="搜书名或作者"/>
+      <image wx:if="{{inputValue.length > 0}}" bindtap="clearInput" src="../../assets/images/close.png"></image>
+    </view>
+    <view class="search-button">
+      <button bindtap="doSubmit">搜索</button>
+    </view>
+  </view>
+  <block wx:if="{{!showReaultList}}">
+    <view class="search-history">
+      <view class="box-head">
+        <view class="title titleColor">
+          <text>搜索历史</text>
+        </view>
+        <view class="operation">
+          <text class="secTitleColor" bindtap="clearSearchHistory">清空</text>
+        </view>
+      </view>
+      <view class="history">
+        <text wx:for="{{historyArr}}" wx:for-item="history" wx:key="idx" bindtap="searchHistory" data-value="{{history}}">{{history}}</text>
+      </view>
+    </view>
+    <view class="search-example">
+      <view class="box-head">
+        <view class="title titleColor">
+          <text>大家都在搜</text>
+        </view>
+        <view class="operation">
+          <text class="secTitleColor" bindtap="searchPublicHistory">换一批</text>
+        </view>
+      </view>
+      <view class="example">
+        <text wx:for="{{publicSearchArr}}" wx:for-item="item" wx:key="idx" data-id="{{item.id}}" data-name="{{item.name}}" bindtap="jumpToNovelDetails">{{item.name}}</text>
+      </view>
+    </view>
+  </block>
+  <view class="result-list" wx:else>
+    <block wx:for="{{novelList}}" wx:for-item="novelItem" wx:key="idx">
+      <view class="novel-item" bindtap="jumpToNovelDetails" data-id="{{novelItem.id}}" data-name="{{novelItem.name}}">
+        <image src="{{novelItem.logo_url}}"></image>
+        <view class="novel-item-info">
+          <view class="novel-name">
+            <text class="titleColor">
+              <text wx:for="{{search.getWordsArr(novelItem.name, inputValue)}}" wx:for-item="words" wx:key="idx" class="{{words === inputValue ? 'special-word' : ''}}">{{words}}</text>
+            </text>
+            <text class="secTitleColor">
+              <text wx:for="{{search.getWordsArr(novelItem.author_name, inputValue)}}" wx:for-item="words" wx:key="idx" class="{{words === inputValue ? 'special-word' : ''}}">{{words}}</text>
+            </text>
+          </view>
+          <view class="novel-content">{{novelItem.intro}}</view>
+          <view class="novel-type">
+            <text class="secTitleColor">{{novelItem.update_type ? '连载中' : '已完结'}}</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <view class="tips" wx:if="{{novelList.length <= 0}}">没有搜索到-.-!</view>
+  </view>
+</view>

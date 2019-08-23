@@ -1,2 +1,14 @@
 <!--pages/bookShelf/bookShelf.wxml-->
-<text>pages/bookShelf/bookShelf.wxml</text>
+<view class="container book-shelf" id="{{skin}}">
+  <view class="shelf-list">
+    <block wx:for="{{shelfList}}" wx:for-item="shelfItem" wx:key="idx">
+      <view class="shelf-item" bindtap="jumpToDetails" data-id="{{shelfItem.id}}">
+        <image src="{{shelfItem.logo_url}}"></image>
+        <view>{{shelfItem.name}}</view>
+      </view>
+    </block>
+    <view class="shelf-item add-book" bindtap="jumpToBookCity">
+      <image src="../../assets/images/add.png"></image>
+    </view>
+  </view>
+</view>

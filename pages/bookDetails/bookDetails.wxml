@@ -35,8 +35,10 @@
     <view class="context">{{novelInfo.intro}}</view>
   </view>
   <view class="operation-btn">
-    <view class="share-it">分享</view>
-    <view class="start-reading" bindtap="jumpToStartReading">开始阅读</view>
-    <view class="join-bookshelf">加入书架</view>
+    <view class="share-button">
+      <button open-type="share">分享</button>
+    </view>
+    <view class="start-reading" bindtap="jumpToStartReading">{{readingHistory[novelInfo.name] ? '继续阅读' : '开始阅读'}}</view>
+    <view class="join-bookshelf {{novelInfo.isAdded ? 'isAdded' : ''}}" bindtap="addBook">{{novelInfo.isAdded ? '已添加' : '加入书架'}}</view>
   </view>
 </view>

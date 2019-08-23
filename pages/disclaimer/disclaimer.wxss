@@ -1,0 +1,22 @@
+/* pages/disclaimer/disclaimer.wxss */
+
+.disclaimer-page {
+  padding: 30rpx;
+}
+
+.disclaimer-page > .title {
+  font-size: 40rpx;
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+.disclaimer-page view {
+  font-size: 32rpx;
+  line-height: 58rpx;
+  margin: 20rpx 0;
+}
+.disclaimer-page view:not(.title) {
+  text-indent: 70rpx;
+}
+.disclaimer-page .bolder {
+  font-weight: bold;
+}

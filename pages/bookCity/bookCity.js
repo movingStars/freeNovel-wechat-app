@@ -27,9 +27,6 @@ Page({
         this.setData({
           bestList: res.data
         })
-      },
-      fail: (res) => {
-        console.log(res)
       }
     })
   },
@@ -40,9 +37,6 @@ Page({
         this.setData({
           goodList: res.data
         })
-      },
-      fail: (res) => {
-        console.log(res)
       }
     })
   },
@@ -53,9 +47,6 @@ Page({
         this.setData({
           suggestList: res.data
         })
-      },
-      fail: (res) => {
-        console.log(res)
       }
     })
   },
@@ -66,9 +57,6 @@ Page({
         this.setData({
           searchList: res.data
         })
-      },
-      fail: (res) => {
-        console.log(res)
       }
     })
   },

@@ -7,7 +7,8 @@
     "pages/search/search",
     "pages/bookDetails/bookDetails",
     "pages/readingPage/readingPage",
-    "pages/novelList/novelList"
+    "pages/novelList/novelList",
+    "pages/disclaimer/disclaimer"
   ],
   "window": {
     "navigationBarBackgroundColor": "#1f222c",
